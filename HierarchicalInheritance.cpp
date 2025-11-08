@@ -1,73 +1,79 @@
-#include<iostream.h>
-#include<conio.h>
-class student{
+#include <iostream>
+using namespace std;
+class Student {
 private:
-char name[20];
-int rno;
+    char name[20];
+    int rollNo;
 public:
-void getstudent(){
-cout<<"Enter name of the student = ";
-cin>>name;
-cout<<"Enter roll number of the student = ";
-cin>>rno;
-}
-void displaystudent(){
-cout<<"Name of the student = "<<name;
-cout<<"\nRoll number of the student = "<<rno;
-}
+    void getStudent() {
+        cout << "Enter name of the student: ";
+        cin >> name;
+        cout << "Enter roll number: ";
+        cin >> rollNo;
+    }
+
+    void displayStudent() {
+        cout << "Name of the student: " << name << endl;
+        cout << "Roll number: " << rollNo << endl;
+    }
 };
-class bsc:public student{
+
+class BSc : public Student {
 private:
-int phy,chem,math;
+    int math, physics, chemistry;
+
 public:
-void getbsc(){
-getstudent();
-cout<<"Enter math marks = ";
-cin>>math;
-cout<<"Enter physics marks = ";
-cin>>phy;
-cout<<"Enter chemistry marks = ";
-cin>>chem;
-}
-void displaybsc(){
-displaystudent();
-cout<<"\nMath marks = "<<math;
-cout<<"\nPhysics marks = "<<phy;
-cout<<"\nChemistry marks = "<<chem;
-}
+    void getBSc() {
+        getStudent();
+        cout << "Enter Math marks: ";
+        cin >> math;
+        cout << "Enter Physics marks: ";
+        cin >> physics;
+        cout << "Enter Chemistry marks: ";
+        cin >> chemistry;
+    }
+
+    void displayBSc() {
+        displayStudent();
+        cout << "Math marks: " << math << endl;
+        cout << "Physics marks: " << physics << endl;
+        cout << "Chemistry marks: " << chemistry << endl;
+    }
 };
-class ba:public student{
+class BA : public Student {
 private:
-int hindi,punjabi;
+    int hindi, punjabi;
 public:
-void getba(){
-getstudent();
-cout<<"Enter Hindi marks = ";
-cin>>hindi;
-cout<<"Enter Punjabi marks = ";
-cin>>punjabi;
-}
-void displayba(){
-displaystudent();
-cout<<"\nHindi marks = "<<hindi;
-cout<<"\nPunjabi marks = "<<punjabi;
-}
+    void getBA() {
+        getStudent();
+        cout << "Enter Hindi marks: ";
+        cin >> hindi;
+        cout << "Enter Punjabi marks: ";
+        cin >> punjabi;
+    }
+    void displayBA() {
+        displayStudent();
+        cout << "Hindi marks: " << hindi << endl;
+        cout << "Punjabi marks: " << punjabi << endl;
+    }
 };
-void main(){
-bsc b1;
-ba b2;
-int choice;
-clrscr();
-cout<<"1. BSc  2. BA \nEnter your stream = ";
-cin>>choice;
-if(choice==1){
-b1.getbsc();
-clrscr();
-b1.displaybsc();
-}else{
-b2.getba();
-clrscr();
-b2.displayba();
-}
-getch();
+
+int main() {
+    BSc b1;
+    BA b2;
+    int choice;
+    cout << "1. BSc\n2. BA\nEnter your stream: ";
+    cin >> choice;
+    if (choice == 1) {
+        b1.getBSc();
+        cout << "\n--- BSc Student Details ---\n";
+        b1.displayBSc();
+    } else if (choice == 2) {
+        b2.getBA();
+        cout << "\n--- BA Student Details ---\n";
+        b2.displayBA();
+    } else {
+        cout << "Invalid choice!" << endl;
+    }
+    return 0;
 }
